@@ -50,6 +50,7 @@
           </div>
           <div class="mt-4">
             <h1 class="text-base text-[#063F5C] font-semibold">Ulasan</h1>
+            @if(count($data['reviews']) > 0)
             @foreach ($data['reviews'] as $review)
             <div class="mt-1">
               <div
@@ -67,9 +68,11 @@
               </div>
             </div>
             @endforeach
-          </div>
-          <div>
-            <a href="/admin/venue/{{$data['venues']->id}}/edit">Edit Venue</a>
+            @else
+            <p>
+              Belum ada review
+            </p>
+            @endif
           </div>
         </div>
       </div>

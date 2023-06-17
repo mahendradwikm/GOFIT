@@ -1,17 +1,15 @@
 <x-layout title="Venue Admin">
   <div class="p-4">
     <nav class="flex justify-between items-center gap-2">
-
       <div class="bg-[#063F5C] w-[80%] rounded-full flex items-center pr-3">
         <input type="search" name="search" id="search" placeholder="Cari Venue"
           class="bg-transparent border-none rounded-l-full p-2 pl-4 w-full text-white">
-
         <img src="/images/search.png" alt="" class="w-4">
       </div>
-
-      <div class="relative w-10 h-10 rounded-full bg-[#063F5C] flex items-center justify-center text-white">
+      <a class="relative w-10 h-10 rounded-full bg-[#063F5C] flex items-center justify-center text-white"
+        href="/admin/venue/add">
         <img src="/images/plus.png" alt="" class="w-6">
-      </div>
+      </a>
       <div class="relative w-10 h-10 rounded-full bg-[#063F5C] flex items-center justify-center text-white">
         <div class="absolute w-2 h-2 bg-amber-600 rounded-full top-2 right-2">
 
@@ -26,7 +24,7 @@
     <main class="mt-4 space-y-4">
       @foreach ($data['venues'] as $venue)
       <div class="bg-[#FDE6BA] shadow-[0_3px_10px_rgb(0,0,0,0.2)] rounded-lg w-full mx-auto cursor-pointer px-1 py-3">
-        <div class="mx-5">
+        <a class="mx-5 block" href="{{'/admin/venue/'. $venue->id}}">
           <div class="grid grid-cols-4 h-28 space-x-3 content-center">
             <img src="/images/picture.png" alt="" class="col-span-1 rounded-lg">
             <div class="col-span-3">
@@ -42,7 +40,7 @@
                 </div>
                 <div class="flex gap-1">
 
-                  <a href="{{'/admin/venue/'. $venue->id}}"
+                  <a href="{{'/admin/venue/'. $venue->id. '/edit'}}"
                     class="bg-[#F27F0C] rounded-full px-4 py-1 text-xs translate-y-1">
                     <p class="text-[#FDE6BA] font-semibold">Edit</p>
                   </a>
@@ -53,10 +51,12 @@
               </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
       @endforeach
     </main>
+  </div>
+  </main>
   </div>
 
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\PreOrder\PreOrderController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Venue\VenueController;
+use App\Models\Venue;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,14 +41,16 @@ Route::post('/register', [RegisterController::class, 'store'])->middleware('gues
 
 // Admin
 Route::get('/admin', [VenueVenueController::class, 'index'])->middleware(['auth', 'admin']);
+Route::post('/admin/venue', [VenueVenueController::class, 'venueStore'])->middleware(['auth', 'admin'])->name('venue.store');
+Route::get('/admin/venue/add', [VenueVenueController::class, 'add'])->middleware(['auth', 'admin'])->name('add.venue');
 Route::get('/admin/venue/{id}', [VenueVenueController::class, 'detail'])->middleware(['auth', 'admin']);
 Route::get('/admin/venue/{id}/edit', [VenueVenueController::class, 'edit'])->middleware(['auth', 'admin']);
 Route::put('/admin/venue/{id}', [VenueVenueController::class, 'update'])->middleware(['auth', 'admin']);
 // User
-Route::get('/home', [UserController::class, 'index'])->middleware(['auth']);
-Route::get('/venue', [VenueController::class, 'index'])->middleware(['auth']);
-Route::get('/venue/date/{id}', [VenueController::class, 'jadwal'])->middleware('auth');
-Route::get('/venue/time/{id}', [VenueController::class, 'time'])->middleware('auth');
+Route::get('/home', [UserController::class, 'index'])->middleware(['auth', 'user']);
+Route::get('/venue', [VenueController::class, 'index'])->middleware(['auth', 'user']);
+Route::get('/venue/date/{id}', [VenueController::class, 'jadwal'])->middleware(['auth', 'user']);
+Route::get('/venue/time/{id}', [VenueController::class, 'time'])->middleware(['auth', 'user']);
 Route::get('/venue/{id}', [VenueController::class, 'detail'])->middleware('auth');
 Route::post('/pre_order', [PreOrderController::class, 'pre_order'])->middleware('auth')->name('pre_order.store');
 Route::get('/detail-order', [OrderController::class, 'index'])->middleware('auth')->name('detail-order');

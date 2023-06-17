@@ -6,17 +6,17 @@
     <p class="text-[#063F5C] font-bold text-xl">Pilih Jadwal</p>
   </div>
   <form method="GET" action="{{'/venue/time/'. $id}}">
-    <div class="flex justify-start px-10 bg-white py-5">
+    <div class="flex justify-center px-10 bg-white py-5">
       <div class="antialiased sans-serif mt-5">
-        <div x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
+        <div class='flex flex-col' x-data="app()" x-init="[initDate(), getNoOfDays()]" x-cloak>
           <div class="container mx-auto px-4 py-2 md:py-10">
-            <div class="mb-5 w-64">
+            <div class="mb-5 w-64 border border-gray-600 rounded-lg p-3">
               <label for="datepicker" class="font-bold mb-1 text-gray-700 block">Select Date</label>
-              <div class="relative">
+              <div class="relative cursor-pointer">
                 <input type="hidden" name="date" x-ref="date">
                 <input type="text" readonly x-model="datepickerValue" @click="showDatepicker = !showDatepicker"
                   @keydown.escape="showDatepicker = false"
-                  class="w-full pl-4 pr-10 py-3 leading-none rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
+                  class="cursor-pointer w-full pl-4 pr-10 py-3 leading-none rounded-lg shadow-sm focus:outline-none focus:shadow-outline text-gray-600 font-medium"
                   placeholder="Select date">
                 <div class="absolute top-0 right-0 px-3 py-2">
                   <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -82,7 +82,7 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          <button type="submit" class="bg-[#F27F0C] px-5 py-1.5 w-fit mx-auto rounded-xl text-white font-semibold">
             Pilih Tanggal
           </button>
         </div>

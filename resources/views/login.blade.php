@@ -32,7 +32,7 @@
           Belum Punya Akun?
           <a href="/register" class="text-[#419EBD]">Sign Up</a>
         </p>
-        <a href="/forgot-password" class="text-[#063F5C] text-sm">Lupa Kata Sandi?</a>
+       
       </div>
     </div>
     </div>

@@ -22,25 +22,27 @@
       </div>
       <div class="flex justify-between">
         <p>Total Tagihan</p>
-        <p>Rp. {{round($data->venue->price)}}</p>
+        <p>Rp {{number_format($data->venue->price, 0, ',', '.')}}</p>
       </div>
       <div class="flex justify-between">
         <p>Biaya Layanan</p>
-        <p>Rp. 6000</p>
+        <p>Rp 6.000</p>
       </div>
       <div class="flex justify-between">
         <p>Potongan Voucher</p>
-        <p>Rp. 10.000</p>
+        <p>Rp 10.000</p>
       </div>
     </div>
     <h1 class="font-bold text-2xl mt-4">Opsi Pembayaran</h1>
-    <a class="w-[85%] mt-2 font-semibold mx-auto block text-white bg-[#063F5C] rounded-lg py-2 "
+    <a class="w-[85%] mt-2 text-center font-semibold mx-auto block text-white bg-[#063F5C] rounded-lg py-2 "
       href="{{'/order/'. $data->id}}">
       Bayar Ditempat
     </a>
   </div>
   <div class="absolute w-full bg-[#88A7C8] h-[60px] flex justify-between items-center bottom-0 left-0 px-5">
-    <p class="text-[#063F5C] font-semibold text-lg">Rp. 5000</p>
+    <p class="text-[#063F5C] font-semibold text-lg">
+      Total Tagihan : Rp {{number_format($data->venue->price + 6000 - 10000, 0, ',', '.') }}
+    </p>
     <div class="bg-[#F27F0C] px-5 py-1.5 rounded-xl text-white font-semibold">
       <a href="{{'/order/'. $data->id}}">
         Pesan Sekarang</a>

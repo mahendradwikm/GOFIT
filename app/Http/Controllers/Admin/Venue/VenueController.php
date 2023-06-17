@@ -9,6 +9,7 @@ use App\Models\Facilities;
 use App\Models\Sport;
 use App\Models\Venue;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 
 class VenueController extends Controller
 {
@@ -111,5 +112,44 @@ class VenueController extends Controller
             return redirect()->back()->withErrors('error', 'Failed to update venue', $th);
         }
 
+    }
+
+    public function add (){
+        
+        $sports = Sport::all();
+        $facilities = Facilities::all();
+        return view('admin.add-venue', compact('sports', 'facilities'));
+    }
+
+    public function venueStore(Request $request){
+
+        // Store Image
+        $images = Storage::disk('public')->put('images', $request->file('image'));
+        $imageName = basename($images);
+
+
+        $venue = [
+            'name' => $request->name,
+            'address' => $request->address,
+            'sport_id' => $request->sport_id,
+            'description' => $request->description,
+            'price' => $request->price,
+            'detail' => $request->detail,
+            'image' => $imageName
+        ];
+
+        $venue = Venue::create($venue);
+
+        // Store facilities
+        $facilities = $request->facilities;
+
+        foreach ($facilities as $facility) {
+            DB::table('f_venues')->insert([
+                'venue_id' => $venue->id,
+                'facility_id' => $facility
+            ]);
+        }
+
+        return redirect('/admin/venue')->with('success', 'Venue added successfully');
     }
 }

@@ -74,7 +74,7 @@
       </div>
     </div>
     <div class="absolute w-full bg-[#88A7C8] h-[60px] flex justify-between items-center bottom-0 left-0 px-5">
-      <p class="text-[#063F5C] font-semibold text-lg">Rp.{{round($data['venue']->price)}}</p>
+      <p class="text-[#063F5C] font-semibold text-lg">Rp {{number_format($data['venue']->price, 0, ',', '.')}}</p>
       <div class="bg-[#F27F0C] px-5 py-1.5 rounded-xl text-white font-semibold">
         <a href="{{'/venue/date/'. $data['venue']->id}}">Pilih Jadwal</a>
       </div>

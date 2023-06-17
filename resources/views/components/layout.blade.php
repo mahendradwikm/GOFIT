@@ -12,7 +12,7 @@
   <title>GoFit | {{ $title }}</title>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="flex flex-col min-h-screen justify-center items-center bg-gray-200">
+<body class="flex flex-col justify-center items-center bg-gray-200">
   @if($title != 'Welcome Page')
   <div class="relative max-w-md min-w-[28rem] bg-white h-screen rounded-t-xl overflow-y-auto overflow-x-hidden">
     {{$slot}}
@@ -32,12 +32,12 @@
       </a>
     </div>
     @if ($title != 'Edit Venue' && $title != 'Detail Venue' && $title != 'Venue Admin')
-      <div class="flex flex-col items-center justify-center gap-1">
-        <a href="#">
-          <img src="{{ asset('/images/navigation/favourite.png') }}" alt="favourite" class="w-8">
-          <a class="text-[#419EBD] text-xs">Favorit</a>
-        </a>
-      </div>
+    <div class="flex flex-col items-center justify-center gap-1">
+      <a href="#">
+        <img src="{{ asset('/images/navigation/favourite.png') }}" alt="favourite" class="w-8">
+        <a class="text-[#419EBD] text-xs">Favorit</a>
+      </a>
+    </div>
     @endif
     <div class="flex flex-col items-center justify-center gap-1">
 

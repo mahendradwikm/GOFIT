@@ -34,7 +34,7 @@
                   <p class="text-sm my-auto font-medium text-[#419EBD]">{{round($venue->rating, 0)}}</p>
                 </div>
                 <div class="bg-[#419EBD] rounded-full px-4 py-1 text-xs translate-y-1">
-                  <p class="text-[#FDE6BA] font-semibold">{{round($venue->price)}} / sesi</p>
+                  <p class="text-[#FDE6BA] font-semibold">{{number_format($venue->price, 0, ',', '.')}} / sesi</p>
                 </div>
               </div>
             </div>
